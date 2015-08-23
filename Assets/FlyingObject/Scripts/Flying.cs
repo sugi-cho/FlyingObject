@@ -28,6 +28,13 @@ public class Flying : MonoBehaviour
 
         transform.rotation = Quaternion.RotateTowards(transform.rotation, toRot, maxDeltaRotate * Time.deltaTime);
         transform.position += transform.forward * speed * Time.deltaTime;
-		
+    }
+
+    void OnDrawGizmos()
+    {
+        if (target != null)
+            Gizmos.DrawLine(transform.position, target.position);
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(transform.position, transform.position + transform.forward * speed);
     }
 }
