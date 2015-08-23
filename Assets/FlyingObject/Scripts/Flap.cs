@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[RequireComponent(typeof(Flying))]
 public class Flap : MonoBehaviour
 {
     public float gravity = 9.8f;
@@ -11,8 +12,8 @@ public class Flap : MonoBehaviour
     void Start()
     {
         Invoke("ShowUpVel", 1f);
-        InvokeRepeating("FlapUpdate", 0, flapInterval);
         flying = GetComponent<Flying>();
+        FlapUpdate();
     }
     void ShowUpVel()
     {
@@ -27,5 +28,6 @@ public class Flap : MonoBehaviour
     {
         upVelocity += -upVelocity + 0.5f * gravity * flapInterval
         * (transform.position.y < flying.target.position.y ? 1.5f : 0.5f);
+        Invoke("FlapUpdate", Random.Range(flapInterval * 0.8f, flapInterval * 1.2f));
     }
 }
