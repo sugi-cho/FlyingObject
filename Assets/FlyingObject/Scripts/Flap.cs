@@ -11,13 +11,8 @@ public class Flap : MonoBehaviour
 
     void Start()
     {
-        Invoke("ShowUpVel", 1f);
         flying = GetComponent<Flying>();
         FlapUpdate();
-    }
-    void ShowUpVel()
-    {
-        Debug.Log(upVelocity);
     }
     void Update()
     {
